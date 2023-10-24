@@ -19,7 +19,7 @@ export default function IndividualArticle() {
   if (isLoading) return <p>Loading Please Wait...</p>;
 
   return (
-<div className="max-w-4xl mx-auto my-8 p-4 bg-white border rounded-lg shadow-lg">
+<div className="max-w-2xl mx-auto my-8 p-4 bg-white border rounded-lg shadow-lg">
   <h2 className="text-2xl font-bold mb-2">{article.title}</h2>
   <p className="text-gray-600 mb-4">Author: {article.author}</p>
 
