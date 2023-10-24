@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticleById } from "./Axios";
 import { useParams } from "react-router-dom";
+import Comments from "./Comments";
 
 export default function IndividualArticle() {
   const { article_id } = useParams();
@@ -32,6 +33,7 @@ export default function IndividualArticle() {
   </div>
 
   <div className="mt-4 leading-7">{article.body}</div>
+  <Comments article_id={article.article_id}/>
 </div>
 
 
