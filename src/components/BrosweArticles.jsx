@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "./Axios";
 import { Link } from "react-router-dom";
+import Voter from "./Voter";
 
 export default function BrowseArticles() {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,23 +19,27 @@ export default function BrowseArticles() {
     <div className="flex-auto">
       {articles.map((article) => {
         return (
-          <div className="flex-wrap row-span-2 container mx-auto py-2 box-border max-w-2xl box-decoration-slice bg-stone-200 border-4  border-red-500 shadow-2xl">
-            <p className="text-xl text-center underline"><Link to= {`article/${article.article_id}`}>{article.title}</Link></p>{" "}
-            <div className="">
+          <div key={article.article_id} className="mb-8 p-4 bg-gray-100 border border-gray-300 rounded shadow-md">
+            <p className="text-xl text-center underline mb-2">
+              <Link to={`article/${article.article_id}`}>{article.title}</Link>
+            </p>{" "}
+            <div className="mb-4">
               {" "}
-              <Link to= {`article/${article.article_id}`}>
-              <img
-                className="mx-auto text-center object-contain h-48 w-96"
-                
-                src={article.article_img_url} alt="Article Image"
-                
-              /></Link>
+              <Link to={`article/${article.article_id}`}>
+                <img
+                  className="mx-auto text-center object-contain h-48 w-96"
+                  src={article.article_img_url}
+                  alt="Article Image"
+                />
+              </Link>
             </div>
-            <p className="text-center text-green-900">
+            <p className="text-center text-green-900 mb-2">
               {" "}
               {article.comment_count} Comments
             </p>{" "}
-            <p className="text-center text-red-900 ">{article.votes} Votes </p>
+            <div className="text-center text-red-900 ">
+              <Voter votes={article.votes} id={article.article_id} />
+            </div>
           </div>
         );
       })}
