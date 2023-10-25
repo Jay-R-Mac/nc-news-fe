@@ -29,3 +29,9 @@ export const patchVotes = (article_id, value) => {
   })
 
 }
+
+export const getUsers = () => {
+  return newsApi.get("/users").then(({data})=>{
+    return data
+  });
+};

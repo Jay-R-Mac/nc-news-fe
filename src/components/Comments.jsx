@@ -16,8 +16,8 @@ export default function Comments(props) {
       <h3 className="text-2xl font-bold mb-4">Comments Section</h3>
       {comments.map((comment) => (
         <div
-          className="mb-4 border border-gray-300 p-4 rounded"
           key={comment.id}
+          className="mb-4 border border-gray-300 p-4 rounded"
         >
           <p className="text-red-500 font-semibold mb-1">{comment.author}</p>
           <p className="text-gray-700 mb-1">Votes: {comment.votes}</p>
