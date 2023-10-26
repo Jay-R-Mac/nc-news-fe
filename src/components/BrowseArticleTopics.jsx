@@ -15,7 +15,7 @@ export default function BrowseArticleTopics() {
       setArticlesInfo(response);
       setIsLoading(false);
     });
-  }, []);
+  }, [articles]);
 
   if (isLoading) return <p>Loading Please Wait...</p>;
   return (

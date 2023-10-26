@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../App";
 
 export default function NavBar({ name }) {
   const [signedIn] = useContext(UserContext);
+  const [isDropDown, setIsDropDown] = useState(false);
+
+  const toggleDropdown = () => {
+    if (isDropDown) {
+      setIsDropDown(false);
+    } else {
+      setIsDropDown(true);
+    }
+  };
 
   return (
     <div className="bg-gray-800 p-4">
@@ -13,10 +22,26 @@ export default function NavBar({ name }) {
             Home
           </Link>
         </li>
-        <li className="text-white">
-          <Link to="/articles" className="hover:text-gray-300">
-            News
-          </Link>
+        <li className="relative group text-white" onClick={toggleDropdown}>
+          <span className="cursor-pointer">News</span>
+          <ul
+            className={`absolute ${
+              isDropDown ? "block" : "hidden"
+            } bg-gray-800 text-white p-2 mt-2 space-y-2`}
+          >
+            <li>
+              <Link to="/articles">All</Link>
+            </li>
+            <li>
+              <Link to="/articles/coding">Coding</Link>
+            </li>
+            <li>
+              <Link to="/articles/cooking">Cooking</Link>
+            </li>
+            <li>
+              <Link to="/articles/football">Football</Link>
+            </li>
+          </ul>
         </li>
         <li className="text-white">
           <Link to="/users" className="hover:text-gray-300">
