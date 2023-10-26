@@ -21,3 +21,17 @@ export const getArticleComments = (article_id) => {
       return data
     });
 }
+
+
+export const patchVotes = (article_id, value) => {
+  return newsApi.patch(`/articles/${article_id}`,{inc_votes: value}).then((res)=>{
+    return res
+  })
+
+}
+
+export const getUsers = () => {
+  return newsApi.get("/users").then(({data})=>{
+    return data
+  });
+};
