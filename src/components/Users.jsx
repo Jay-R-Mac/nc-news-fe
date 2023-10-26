@@ -18,7 +18,7 @@ export default function Users() {
         {users.map((user) => (
           <div
             key={user.id}
-            className="bg-white p-4 border border-gray-300 shadow-lg rounded"
+            className="bg-white p-4 border border-gray-300 shadow-lg shadow-cyan-700 rounded"
           >
             <p className="text-xl font-semibold mb-2">{user.username}</p>
             <img

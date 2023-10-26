@@ -30,16 +30,16 @@ export default function NavBar({ name }) {
             } bg-gray-800 text-white p-2 mt-2 space-y-2`}
           >
             <li>
-              <Link to="/articles">All</Link>
+              <Link to="/articles" className="hover:text-gray-300">All</Link>
             </li>
             <li>
-              <Link to="/articles/coding">Coding</Link>
+              <Link to="/articles/coding" className="hover:text-gray-300">Coding</Link>
             </li>
             <li>
-              <Link to="/articles/cooking">Cooking</Link>
+              <Link to="/articles/cooking" className="hover:text-gray-300">Cooking</Link>
             </li>
             <li>
-              <Link to="/articles/football">Football</Link>
+              <Link to="/articles/football" className="hover:text-gray-300">Football</Link>
             </li>
           </ul>
         </li>
