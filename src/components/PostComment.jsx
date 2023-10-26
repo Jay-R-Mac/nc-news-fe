@@ -41,6 +41,7 @@ export default function PostComment({ article_id }) {
         <form className="flex items-center mt-4" onSubmit={submitPost}>
           <label className="mr-2 text-xl font-bold">Post Comment</label>
           <textarea
+          disabled={isDisabled}
             className="mr-2 border border-gray-300 p-2 rounded"
             value={newComment}
             onChange={(e) => {
