@@ -10,7 +10,7 @@ export default function Comments(props) {
     getArticleComments(article_id).then((response) => {
       setComments(response);
     });
-  }, []);
+  }, [comments]);
 
   return (
     <div className="bg-gray-100 p-4 rounded-lg shadow-lg">
