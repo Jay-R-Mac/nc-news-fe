@@ -35,3 +35,18 @@ export const getUsers = () => {
     return data
   });
 };
+
+
+
+
+
+
+
+
+
+
+
+
+export const getArticlesTopics = (topic) =>{
+
+}

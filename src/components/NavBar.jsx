@@ -14,7 +14,7 @@ export default function NavBar({ name }) {
           </Link>
         </li>
         <li className="text-white">
-          <Link to="/news" className="hover:text-gray-300">
+          <Link to="/articles" className="hover:text-gray-300">
             News
           </Link>
         </li>
