@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { getArticles } from "./Axios";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Voter from "./Voter";
+
 
 export default function BrowseArticles() {
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +23,9 @@ export default function BrowseArticles() {
           <div key={article.article_id} className="mb-8 p-4 bg-gray-100 border border-gray-300 rounded shadow-md">
             <p className="text-xl text-center underline mb-2">
               <Link to={`article/${article.article_id}`}>{article.title}</Link>
+            </p>{" "}
+            <p className="text-xl text-center italic mb-2">
+              <Link to={`${article.topic}`}>{article.topic}</Link>
             </p>{" "}
             <div className="mb-4">
               {" "}
