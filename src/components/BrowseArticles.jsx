@@ -15,10 +15,11 @@ export default function BrowseArticles({ sortBy, sortAsc }) {
       let sortByA = a[sortBy];
       let sortByB = b[sortBy];
       
-      if (typeof a[sortBy] === 'string') {
+      if (sortBy === 'created_at') {
+        sortByA = Date.parse(a[sortBy]);
+        sortByB = Date.parse(b[sortBy]);
+      } else if (typeof a[sortBy] === 'string') {
         sortByA = parseFloat(a[sortBy]);
-      }
-      if (typeof b[sortBy] === 'string') {
         sortByB = parseFloat(b[sortBy]);
       }
 
@@ -31,7 +32,6 @@ export default function BrowseArticles({ sortBy, sortAsc }) {
       }
       return 0;
     });
-    console.log(sortedArticles);
     setArticlesInfo(sortedArticles);
   }
 
@@ -63,12 +63,12 @@ export default function BrowseArticles({ sortBy, sortAsc }) {
               className="mb-8 p-4 bg-gray-100 border border-gray-300 rounded shadow-md"
             >
               <p className="text-xl text-center underline mb-2">
-                <Link to={`article/${article.article_id}`}>
+                <Link to={`/articles/article/${article.article_id}`}>
                   {article.title}
                 </Link>
               </p>
               <div className="mb-4">
-                <Link to={`article/${article.article_id}`}>
+                <Link to={`/articles/article/${article.article_id}`}>
                   <img
                     className="mx-auto text-center object-contain h-48 w-96"
                     src={article.article_img_url}

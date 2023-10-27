@@ -53,3 +53,8 @@ export const postArticleComment = (article_id, comment) => {
       return res;
     });
 };
+
+export const deleteArticleComments = (comment_id) =>{
+  return newsApi
+  .delete(`/comments/${comment_id}`)
+}

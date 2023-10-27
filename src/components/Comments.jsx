@@ -2,6 +2,7 @@ import { getArticleComments } from "./Axios";
 import { useEffect, useState } from "react";
 import PostComment from "./PostComment";
 import { dateChanger } from "../../utils/utils";
+import CommentDeleter from "./CommentDeleter";
 
 export default function Comments(props) {
   const article_id = props.article_id;
@@ -23,6 +24,7 @@ export default function Comments(props) {
           key={index}
         >
           <p className="text-red-700 font-semibold mb-1">{comment.author}</p>
+          <CommentDeleter comment_id={comment.comment_id} commentAuthor={comment.author}/>
           <p className="text-gray-700 mb-1">Votes: {comment.votes}</p>
           <p className="text-gray-800 mb-1">{comment.body}</p>
           <p className="text-gray-600">{dateChanger(comment.created_at)}</p>
