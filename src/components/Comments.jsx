@@ -25,7 +25,6 @@ export default function Comments(props) {
         >
           <p className="text-red-700 font-semibold mb-1">{comment.author}</p>
           <CommentDeleter comment_id={comment.comment_id} commentAuthor={comment.author}/>
-          <p className="text-gray-700 mb-1">Votes: {comment.votes}</p>
           <p className="text-gray-800 mb-1">{comment.body}</p>
           <p className="text-gray-600">{dateChanger(comment.created_at)}</p>
         </div>
