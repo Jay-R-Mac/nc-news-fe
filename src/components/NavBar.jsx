@@ -23,7 +23,7 @@ export default function NavBar({ name }) {
           </Link>
         </li>
         <li className="relative group text-white" onClick={toggleDropdown}>
-          <span className="cursor-pointer">News</span>
+          <span className="cursor-pointer">Topics</span>
           <ul
             className={`absolute ${
               isDropDown ? "block" : "hidden"
