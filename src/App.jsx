@@ -6,7 +6,7 @@ import BrowseArticles from "./components/BrosweArticles";
 import { Route, Routes } from "react-router-dom";
 import IndividualArticle from "./components/IndividualArticle";
 import Users from "./components/Users";
-import BrowseArticleTopics from "./components/BrowseArticleTopics";
+
 
 export const UserContext = createContext()
 
@@ -25,7 +25,7 @@ function App() {
           <Routes>
           <Route path="/" element={<Home />} />
             <Route path="/articles" element={<BrowseArticles />} />
-            <Route path="/articles/:topic" element={<BrowseArticleTopics />} />
+            <Route path="/articles/:topic" element={<BrowseArticles />} />
             <Route path="/articles/article/:article_id" element={<IndividualArticle />} />
             <Route path="/users" element={<Users/>} />
             

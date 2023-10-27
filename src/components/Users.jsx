@@ -4,13 +4,15 @@ import SignInBtn from "./SignInBtn";
 
 export default function Users() {
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getUsers().then((response) => {
       setUsers(response.users);
+      setIsLoading(false)
     });
   }, []);
-
+  if (isLoading) return <p>Loading Please Wait...</p>;
   return (
     <div className="text-center">
       <h3 className="text-2xl font-bold mb-4">Users</h3>
