@@ -38,12 +38,18 @@ export const getUsers = () => {
   });
 };
 
-export const postArticleComment = (article_id, comment) => {
-
+export const getArticlesTopics = (topic) => {
   return newsApi
-    .post(`/articles/${article_id}/comments`, comment )
+    .get(`/articles?topic=${topic}`, { params: { sort_by: "created_at" } })
+    .then((res) => {
+      return res.data;
+    });
+};
+
+export const postArticleComment = (article_id, comment) => {
+  return newsApi
+    .post(`/articles/${article_id}/comments`, comment)
     .then((res) => {
       return res;
-    })
-
+    });
 };
