@@ -15,7 +15,10 @@ export const getArticles = () => {
 export const getArticleById = (article_id) => {
   return newsApi.get(`/articles/${article_id}`).then(({ data }) => {
     return data.article;
-  });
+  })
+  // .catch((error)=>{
+  //   console.log(error)
+  // });
 };
 
 export const getArticleComments = (article_id) => {
@@ -40,7 +43,7 @@ export const getUsers = () => {
 
 export const getArticlesTopics = (topic) => {
   return newsApi
-    .get(`/articles?topic=${topic}`, { params: { sort_by: "created_at" } })
+    .get(`/articles?topic=${topic}`)
     .then((res) => {
       return res.data;
     });

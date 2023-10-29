@@ -3,22 +3,23 @@ import { getArticles, getArticlesTopics } from "./Axios";
 import { Link, useParams } from "react-router-dom";
 import Voter from "./Voter";
 import { dateChanger } from "../../utils/utils";
+import ErrorPage from "./ErrorPage";
 
 export default function BrowseArticles({ sortBy, sortAsc }) {
   const { topic } = useParams();
   const [isLoading, setIsLoading] = useState(true);
-
+  const [errorStatus, setErrorStatus] = useState(null);
   const [articles, setArticlesInfo] = useState([]);
 
   function filterSort(articles, sortBy, sortAsc) {
     const sortedArticles = articles.slice().sort((a, b) => {
       let sortByA = a[sortBy];
       let sortByB = b[sortBy];
-      
-      if (sortBy === 'created_at') {
+
+      if (sortBy === "created_at") {
         sortByA = Date.parse(a[sortBy]);
         sortByB = Date.parse(b[sortBy]);
-      } else if (typeof a[sortBy] === 'string') {
+      } else if (typeof a[sortBy] === "string") {
         sortByA = parseFloat(a[sortBy]);
         sortByB = parseFloat(b[sortBy]);
       }
@@ -37,21 +38,30 @@ export default function BrowseArticles({ sortBy, sortAsc }) {
 
   useEffect(() => {
     if (topic) {
-      getArticlesTopics(topic).then((response) => {
-        setArticlesInfo(response);
-        setIsLoading(false);
-        filterSort(response, sortBy, sortAsc);
-      });
+      getArticlesTopics(topic)
+        .then((response) => {
+          setArticlesInfo(response);
+          setIsLoading(false);
+          filterSort(response, sortBy, sortAsc);
+        })
+        .catch((error) => {
+          setErrorStatus(error.response.status), setIsLoading(false);
+        });
     } else {
       getArticles().then((response) => {
         setArticlesInfo(response);
         setIsLoading(false);
         filterSort(response, sortBy, sortAsc);
+      })
+      .catch((error) => {
+        setErrorStatus(error.response.status), setIsLoading(false);
       });
     }
   }, [topic, sortBy, sortAsc]);
 
   if (isLoading) return <p>Loading Please Wait...</p>;
+  if (errorStatus === 404) {return (<ErrorPage />)}
+
 
   return (
     <div>

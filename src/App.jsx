@@ -7,32 +7,34 @@ import { Route, Routes } from "react-router-dom";
 import IndividualArticle from "./components/IndividualArticle";
 import Users from "./components/Users";
 import SortArticles from "./components/SortArticles";
+import ErrorPage from "./components/ErrorPage";
 
-
-
-export const UserContext = createContext()
+export const UserContext = createContext();
 
 function App() {
-  
-  const [signedIn, setSignedIn] = useState('')
+  const [signedIn, setSignedIn] = useState("");
 
   return (
     <>
-    <UserContext.Provider value={[signedIn, setSignedIn]}>
-      <div className="App">
-        <Header  />
-        <NavBar name={signedIn}/>
-        <div className="Content">
-          <Routes>
-          <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<SortArticles/>} />
-            <Route path="/articles/:topic" element={<SortArticles />} />
-            <Route path="/articles/article/:article_id" element={<IndividualArticle />} />
-            <Route path="/users" element={<Users/>} />
-            
-          </Routes>
+      <UserContext.Provider value={[signedIn, setSignedIn]}>
+        <div className="App">
+          <Header />
+          <NavBar name={signedIn} />
+          <div className="Content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/articles" element={<SortArticles />} />
+              <Route path="/articles/:topic" element={<SortArticles />} />
+              <Route
+                path="/articles/article/:article_id"
+                element={<IndividualArticle />}
+              />
+              <Route path="/users" element={<Users />} />
+              <Route path="/*" element={<ErrorPage />} />
+            </Routes>
+          </div>
         </div>
-      </div></UserContext.Provider>
+      </UserContext.Provider>
     </>
   );
 }
